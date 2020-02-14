@@ -17,7 +17,7 @@ public class ProductController {
 
 
     @RequestMapping(
-        value="/{productId}", 
+        value="/api/{productId}", 
         method = RequestMethod.GET,
         headers = {
             "Accept=application/json"

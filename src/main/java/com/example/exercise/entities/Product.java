@@ -5,16 +5,16 @@ public class Product {
     private Long id;
 
     private final String productName;
-    private final Size size;
-    private final Price price;
-    private final Category category;
-    private final Color color;
+    private final int size;
+    private final int price;
+    private final int currency;
+    private final String color;
 
-    public Product(String productName, Size size, Price price, Category category, Color color) {
+    public Product(String productName, int size, int price, int currency, String color) {
         this.productName = productName;
         this.size = size;
         this.price = price;
-        this.category = category;
+        this.currency = currency;
         this.color = color;
     }
 
@@ -30,24 +30,23 @@ public class Product {
         return productName;
     }
 
-    public Size getSize() {
+    public int getSize() {
         return size;
     }
 
-    public Price getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCurrency() {
+        return currency;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
     
-
     
 
 
