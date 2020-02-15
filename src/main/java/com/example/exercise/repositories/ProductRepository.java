@@ -16,11 +16,25 @@ public interface ProductRepository {
     @Select("SELECT * FROM product")
     public List<Product> findAll();
 
-    @Select("SELECT * FROM product WHERE price > #{price} ")
+    @Select("SELECT * FROM product WHERE price BETWEEN #{lowerPrice} AND #{biggerPrice}")
     public List<Product> findByPriceBiggerThan(int price);
 
     @Select("SELECT * FROM product WHERE price < #{price} ")
     public List<Product> findByPriceLowerThan(int price);
+
+    @Select("SELECT * FROM product WHERE category like '%#{category}%'")
+    public List<Product> findByCategory(String category);
+
+    @Select("SELECT * FROM product WHERE id = #{id}")
+    public Product findById(Long id);
+
+    @Select("SELECT * FROM product WHERE id = #{id}")
+    public Product findBy();
+    
+
+
+
+    // For Authorized users only:
 
     @Delete("DELETE FROM product WHERE id = #{id}")
     public void deleteById(Long id);

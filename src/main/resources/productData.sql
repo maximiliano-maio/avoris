@@ -1,10 +1,9 @@
-INSERT INTO productdb.currencies (currency) VALUES ('US_DOLLAR'), ('EURO'), ('POUNDS'); 
 
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('bag', 'red', 'small', 20, 1);
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('backpack', 'black', '90l', 100, 3);
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('tennis racket', 'mixed', 'standard', 40, 2);
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('baseball bat', 'wood', 'standard', 10, 1);
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('wallet', 'pink', 'small', 4, 1);
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('notebook', 'white', '14inch', 250, 1);
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('pen', 'blue', 'standard', 1, 2);
-INSERT INTO productdb.product (product_name, color, size, price, currency_id ) VALUES ('mouse', 'orange', 'small', 10, 1);
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('lady purse', 'bag', 'red', 'small', 20, 'USD');
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('backpack', 'bag', 'black', '90l', 100, 'EUR');
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('tennis racket','sport', 'mixed', 'standard', 40, 'USD');
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('baseball bat','sport', 'wood', 'standard', 10, 'EUR');
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('crayon','writing', 'pink', 'small', 4, 'USD');
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('notebook','computer', 'white', '14inch', 250, 'USD');
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('pen','writing', 'blue', 'standard', 1, 'EUR');
+INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('mouse','computer', 'orange', 'small', 10, 'EUR');

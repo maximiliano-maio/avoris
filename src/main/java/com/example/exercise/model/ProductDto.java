@@ -1,7 +1,7 @@
-package com.example.exercise.entities;
+package com.example.exercise.model;
 
-public class Product {
 
+public class ProductDto {
     private Long id;
 
     private final String productName;
@@ -10,7 +10,7 @@ public class Product {
     private final String currency;
     private final String color;
 
-    public Product(String productName, String size, int price, String currency, String color) {
+    public ProductDto(String productName, String size, int price, String currency, String color) {
         this.productName = productName;
         this.size = size;
         this.price = price;
@@ -47,7 +47,7 @@ public class Product {
     }
 
     
+
     
-
-
+    
 }
