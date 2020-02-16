@@ -28,5 +28,15 @@ public class ProductServiceImpl implements IService<Product> {
         return productDao.save(product);
     }
 
+    @Override
+    public Product findById(Long id) {
+        return productDao.findById(id);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        productDao.deleteById(id);
+    }
+
     
 }

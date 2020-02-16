@@ -33,7 +33,7 @@ public class ProductController {
     private ProductConverter ProductConverter;
 
     @RequestMapping(
-        value="/api/{productId}", 
+        value="/api/{category}", 
         method = RequestMethod.GET,
         headers = {
             "Accept=application/json"
