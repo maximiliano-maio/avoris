@@ -68,25 +68,6 @@ public class UserAuthIntegTests {
         assertThat(status.intValue()).isEqualTo(1);
     }
 
-    @Test
-    public void givenUserInHeader_whenSendingAdminApiRequest_thenReturnStatusDifferentThan1() throws Exception {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("username", "user");
-        headers.add("password", "user");
-
-        SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(p12Location.getFile(), p12Password.toCharArray()).build();
-        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext, SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        
-        HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(socketFactory).build();
-        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClient);
-        restTemplate = new RestTemplate(factory);
-
-        ProductDto product = new ProductDto(20L,"testProduct","test", "small", 10, "USD", "red");
-        HttpEntity<Object> request = new HttpEntity<Object>(product, headers); 
-
-        Integer status = restTemplate.postForObject(base, request, int.class);
-        assertThat(status.intValue()).isNotEqualTo(1);
-    }
+   
     
 }

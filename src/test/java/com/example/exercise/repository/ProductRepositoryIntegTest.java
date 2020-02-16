@@ -55,7 +55,7 @@ public class ProductRepositoryIntegTest {
 
     @Test
     public void whenFindByInvalidCategory_thenReturnEmptyListProduct(){
-        List<Product> products = productRepository.findByCategory("test");
+        List<Product> products = productRepository.findByCategory("nada");
         assertThat(products).hasSize(0);
     }
 
