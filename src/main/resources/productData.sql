@@ -1,4 +1,3 @@
-
 INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('lady purse', 'bag', 'red', 'small', 20, 'USD');
 INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('backpack', 'bag', 'black', '90l', 100, 'EUR');
 INSERT INTO productdb.product (product_name, category, color, size, price, currency ) VALUES ('tennis racket','sport', 'mixed', 'standard', 40, 'USD');

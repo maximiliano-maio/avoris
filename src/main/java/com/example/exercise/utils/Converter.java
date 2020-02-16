@@ -23,7 +23,7 @@ public class Converter<T, U> {
       return fromEntity.apply(entity);
     }
   
-    public final List<U> createFromDto(final Collection<T> dtos) {
+    public List<U> createFromDto(final Collection<T> dtos) {
       return dtos.stream().map(this::convertFromDto).collect(Collectors.toList());
     }
   

@@ -1,48 +1,50 @@
 package com.example.exercise.repositories;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.example.exercise.entities.Product;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-@Mapper
-public interface ProductRepository {
+@Repository
+public class ProductRepository {
 
-    @Select("SELECT * FROM product")
-    public List<Product> findAll();
-
-    @Select("SELECT * FROM product WHERE price BETWEEN #{lowerPrice} AND #{biggerPrice}")
-    public List<Product> findByPriceBiggerThan(int price);
-
-    @Select("SELECT * FROM product WHERE price < #{price} ")
-    public List<Product> findByPriceLowerThan(int price);
-
-    @Select("SELECT * FROM product WHERE category like '%#{category}%'")
-    public List<Product> findByCategory(String category);
-
-    @Select("SELECT * FROM product WHERE id = #{id}")
-    public Product findById(Long id);
-
-    @Select("SELECT * FROM product WHERE id = #{id}")
-    public Product findBy();
     
+    @Autowired
+    private JdbcTemplate template; 
 
+    public List<Product> findAll(){
+        String query = "SELECT id, product_name, category, color, size, price, currency FROM productdb.product";
+        List<Product> products = template.query(query,
+            (result,rowNum)->new Product(result.getLong("id") ,result.getString("product_name"),result.getString("category"), result.getString("size"), result.getInt("price"), result.getString("currency"), result.getString("color") ));
+        
+        return products;
+    };
 
+    public Product findById(Long id) {
+        String query = "SELECT * FROM productdb.product WHERE id = ?";
+        Product product = template.queryForObject(query, new Object[]{id}, new BeanPropertyRowMapper<>(Product.class));
+        return product;
+    };
+
+    public List<Product> findByCategory(String category) {
+        return findAll().stream().filter(s -> s.getCategory().equals(category)).collect(Collectors.toList());
+    }
 
     // For Authorized users only:
 
-    @Delete("DELETE FROM product WHERE id = #{id}")
-    public void deleteById(Long id);
+    public void deleteById(Long id){
+        String query = "DELETE FROM productdb.product WHERE id = ?";
+        template.update(query, id);
+    };
 
-    @Update("UPDATE product SET product_name = #{productName}, color = #{color}, size = #{size}, price = #{price}, currency_id = {currency}")
-    public int update(Product product);
-
-    @Insert("INSERT INTO product(product_name, color, size, price, currency) VALUES (#{productName}, #{color}, #{size}, #{price}, #{currency})")
-    public int insert(Product product);
+    public int save(Product product){
+        String query = "INSERT INTO productdb.product(product_name,category, color, size, price, currency) VALUES (?,?,?, ?, ?, ?)";
+        return template.update(query, product.getProductName(), product.getCategory(), product.getColor(), product.getSize(), product.getPrice(), product.getCurrency());
+    };
     
 }

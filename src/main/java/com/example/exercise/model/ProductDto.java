@@ -5,13 +5,16 @@ public class ProductDto {
     private Long id;
 
     private final String productName;
+    private final String category;
     private final String size;
     private final int price;
     private final String currency;
     private final String color;
 
-    public ProductDto(String productName, String size, int price, String currency, String color) {
+    public ProductDto(Long id, String productName, String category, String size, int price, String currency, String color) {
+        this.id = id;
         this.productName = productName;
+        this.category = category;
         this.size = size;
         this.price = price;
         this.currency = currency;
@@ -28,6 +31,10 @@ public class ProductDto {
 
     public String getProductName() {
         return productName;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public String getSize() {
@@ -47,7 +54,7 @@ public class ProductDto {
     }
 
     
-
+    
     
     
 }

@@ -11,10 +11,11 @@ public class ProductConverter extends Converter<ProductDto, Product> {
     }
 
     private static ProductDto convertToProductDto(Product product) {
-        return new ProductDto(product.getProductName(), product.getSize(), product.getPrice(), product.getCurrency(), product.getColor());
+        return new ProductDto(product.getId(),product.getProductName(),product.getCategory(), product.getSize(), product.getPrice(), product.getCurrency(), product.getColor());
     }
     
     private static Product convertToProduct(ProductDto product) {
-        return new Product(product.getProductName(), product.getSize(), product.getPrice(), product.getCurrency(), product.getColor());
+        return new Product(product.getId(),product.getProductName(),product.getCategory(), product.getSize(), product.getPrice(), product.getCurrency(), product.getColor());
     }
+
 }

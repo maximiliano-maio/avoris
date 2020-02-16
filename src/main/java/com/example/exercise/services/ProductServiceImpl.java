@@ -18,20 +18,14 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAll() {
         return productDao.findAll();
     }
-
-    @Override
-    public List<Product> findByPriceBiggerThan(int price) {
-        return productDao.findByPriceBiggerThan(price);
-    }
-
-    @Override
-    public List<Product> findByPriceLowerThan(int price) {
-        return productDao.findByPriceLowerThan(price);
-    }
-
     @Override
     public List<Product> findByCategory(String category) {
         return productDao.findByCategory(category);
+    }
+
+    @Override
+    public int save(Product product) {
+        return productDao.save(product);
     }
 
     

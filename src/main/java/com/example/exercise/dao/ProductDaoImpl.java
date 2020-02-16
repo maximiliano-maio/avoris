@@ -22,15 +22,12 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public List<Product> findByPriceBiggerThan(int price) {
-        return productRepository.findByPriceBiggerThan(price);
+    public List<Product> findByCategory(String category) {
+        return productRepository.findByCategory(category);
     }
 
-    @Override
-    public List<Product> findByPriceLowerThan(int price) {
-        return productRepository.findByPriceLowerThan(price);
-    }
 
+    
     @Override
     public void deleteById(Long id) {
         productRepository.deleteById(id);
@@ -38,18 +35,15 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public int update(Product product) {
-        return productRepository.update(product);
+        return productRepository.save(product);
     }
 
     @Override
-    public int insert(Product product) {
-        return productRepository.insert(product);
+    public int save(Product product) {
+        return productRepository.save(product);
     }
 
-    @Override
-    public List<Product> findByCategory(String category) {
-        return productRepository.findByCategory(category);
-    }
+    
 
 
     
