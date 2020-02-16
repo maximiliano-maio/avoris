@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import com.example.exercise.entities.Product;
 import com.example.exercise.model.ProductDto;
-import com.example.exercise.services.ProductService;
+import com.example.exercise.services.IService;
 import com.example.exercise.utils.ProductConverter;
 
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class ProductController {
     private final static Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
-    private ProductService productService;
+    private IService<Product> productService;
     @Autowired
     private ProductConverter ProductConverter;
 

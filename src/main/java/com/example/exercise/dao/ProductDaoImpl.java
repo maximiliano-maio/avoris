@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-public class ProductDaoImpl implements ProductDao {
+public class ProductDaoImpl implements Dao<Product> {
 
     @Autowired
     private ProductRepository productRepository;
@@ -25,8 +25,6 @@ public class ProductDaoImpl implements ProductDao {
     public List<Product> findByCategory(String category) {
         return productRepository.findByCategory(category);
     }
-
-
     
     @Override
     public void deleteById(Long id) {
@@ -43,8 +41,9 @@ public class ProductDaoImpl implements ProductDao {
         return productRepository.save(product);
     }
 
-    
-
-
+    @Override
+    public Product findById(Long id) {
+        return productRepository.findById(id);
+    }
     
 }

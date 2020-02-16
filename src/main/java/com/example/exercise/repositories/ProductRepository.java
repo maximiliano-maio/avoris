@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductRepository {
 
-    
     @Autowired
     private JdbcTemplate template; 
 
@@ -34,8 +33,6 @@ public class ProductRepository {
     public List<Product> findByCategory(String category) {
         return findAll().stream().filter(s -> s.getCategory().equals(category)).collect(Collectors.toList());
     }
-
-    // For Authorized users only:
 
     public void deleteById(Long id){
         String query = "DELETE FROM productdb.product WHERE id = ?";

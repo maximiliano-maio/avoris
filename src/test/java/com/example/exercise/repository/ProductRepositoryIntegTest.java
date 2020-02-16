@@ -1,8 +1,9 @@
 package com.example.exercise.repository;
 
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -40,9 +42,21 @@ public class ProductRepositoryIntegTest {
     }
 
     @Test
+    public void whenFindByInvalidId_thenThrowsException(){
+        assertThrows(EmptyResultDataAccessException.class, () -> productRepository.findById(1000L));
+        
+    }
+
+    @Test
     public void whenFindByValidCategory_thenReturnProduct(){
         List<Product> products = productRepository.findByCategory("sport");
         assertThat(products).hasSize(2);
+    }
+
+    @Test
+    public void whenFindByInvalidCategory_thenReturnEmptyListProduct(){
+        List<Product> products = productRepository.findByCategory("test");
+        assertThat(products).hasSize(0);
     }
 
     @Test
