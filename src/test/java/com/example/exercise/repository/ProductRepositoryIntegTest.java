@@ -71,7 +71,7 @@ public class ProductRepositoryIntegTest {
         product.setId(100L);
         int result = productRepository.save(product);
 
-        assertThat(result).isGreaterThan(-1);
+        assertThat(result).isGreaterThan(0);
     }
     
 }

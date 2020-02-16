@@ -13,6 +13,7 @@ public class Product {
 
     public Product(){};
 
+
     public Product(Long id, String productName, String category, String size, int price, String currency, String color) {
         this.id = id;
         this.productName = productName;
@@ -79,6 +80,8 @@ public class Product {
     public void setColor(String color) {
         this.color = color;
     }
+
+    
     
     
 

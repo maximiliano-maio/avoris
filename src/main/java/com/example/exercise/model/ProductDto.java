@@ -4,12 +4,12 @@ package com.example.exercise.model;
 public class ProductDto {
     private Long id;
 
-    private final String productName;
-    private final String category;
-    private final String size;
-    private final int price;
-    private final String currency;
-    private final String color;
+    private String productName;
+    private String category;
+    private String size;
+    private int price;
+    private String currency;
+    private String color;
 
     public ProductDto(Long id, String productName, String category, String size, int price, String currency, String color) {
         this.id = id;
@@ -52,6 +52,33 @@ public class ProductDto {
     public String getColor() {
         return color;
     }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    
+    
 
     
     
